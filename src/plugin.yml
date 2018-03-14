@@ -1,0 +1,36 @@
+main: chuanyeow.Final
+name: PlayCY
+version: 1.1
+author: Chuan Yeow
+description: PlayCY Minecraft Plugin
+commands:
+  spawn:
+    description: Spawn in the Hub
+    usage: /spawn
+    permission: playcy.spawn
+    permission-message: You not Good Enough!
+  hubitems:
+    description: Get Hub Items
+    usage: /hubitems
+    permission: playcy.hubitems
+    permission-message: You not Good Enough!
+  serverinfo:
+    description: Information about PlayCY
+    usage: /serverinfo
+    permission: playcy.serverinfo
+    permission-message: You not Good Enough!
+  haunt:
+    description: Haunt a Player
+    usage: /haunt
+    permission: playcy.haunt
+    permission-message: This does not Exist!
+  serverhelp:
+    description: How to help PlayCY
+    usage: /serverhelp
+    permission: playcy.serverhelp
+    permission-message: You not Good Enough!
+  nukeslobby:
+    description: Lobby for Nukes
+    usage: /nukeslobby
+    permission: playcy.nukeslobby
+    permission-message: You not Good Enough!

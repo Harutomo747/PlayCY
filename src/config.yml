@@ -1,0 +1,41 @@
+# PlayCY Plugin | Version: 1.0 | Chuan Yeow
+# No one else can Use this Plugin except for PlayCY!
+
+Spawn:
+    World: PlayCY_Spawn
+    x: 233.12
+    y: 81.45
+    z: 232.62
+Compass:
+    Name: Game Menu
+HidePlayers:
+    Name: Toggle Players
+News:
+    Line 1: 'bc'
+    Line 2: 'bc'
+    Line 3: 'bc'
+    Line 4: 'bc'
+    Line 5: 'bc'
+    Line 6: 'bc'
+ServerIF:
+    Line 1: 'abc'
+    Line 2: 'abc'
+    Line 3: 'abc'
+    Line 4: 'abc'
+    Line 5: 'abc'
+    Line 6: 'abc'
+    Line 7: 'abc'
+    Line 8: 'abc'
+    Line 9: 'abc'
+    Line 10: 'abc'
+ServerHP:
+    Line 1: 'abc'
+    Line 2: 'abc'
+    Line 3: 'abc'
+    Line 4: 'abc'
+    Line 5: 'abc'
+    Line 6: 'abc'
+    Line 7: 'abc'
+    Line 8: 'abc'
+    Line 9: 'abc'
+    Line 10: 'abc'
