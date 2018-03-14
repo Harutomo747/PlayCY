@@ -58,22 +58,62 @@ public class Final extends JavaPlugin {
 			ArrayList<ItemMeta> idmeta = new ArrayList<ItemMeta>();
 
 			ItemStack NukesGame01 = new ItemStack(Material.EMERALD_BLOCK);
+			
+			//Debugging
+			//Nukes01 World
+			if(Bukkit.getWorld("Nukes01").getPlayers().size() <= 0) {
+				NukesGame01.setType(Material.COAL_BLOCK);		//Material Change Way
+			}else {
+				if(Bukkit.getWorld("Nukes01").getPlayers().size() >= 1) {
+					NukesGame01.setType(Material.EMERALD_BLOCK);
+				}
+			}
+			//Nukes02 World
+			if(Bukkit.getWorld("Nukes02").getPlayers().size() <= 0) {
+				NukesGame01.setType(Material.COAL_BLOCK);		//Material Change Way
+			}else {
+				if(Bukkit.getWorld("Nukes02").getPlayers().size() >= 1) {
+					NukesGame01.setType(Material.EMERALD_BLOCK);
+				}
+			}
+			//Nukes03 World
+			if(Bukkit.getWorld("Nukes03").getPlayers().size() <= 0) {
+				NukesGame01.setType(Material.COAL_BLOCK);		//Material Change Way
+			}else {
+				if(Bukkit.getWorld("Nukes03").getPlayers().size() >= 1) {
+					NukesGame01.setType(Material.EMERALD_BLOCK);
+				}
+			}
+			//Nukes04 World
+			if(Bukkit.getWorld("Nukes04").getPlayers().size() <= 0) {
+				NukesGame01.setType(Material.COAL_BLOCK);		//Material Change Way
+			}else {
+				if(Bukkit.getWorld("Nukes04").getPlayers().size() >= 1) {
+					NukesGame01.setType(Material.EMERALD_BLOCK);
+				}
+			}
+			//Nukes05 World
+			if(Bukkit.getWorld("Nukes05").getPlayers().size() <= 0) {
+				NukesGame01.setType(Material.COAL_BLOCK);		//Material Change Way
+			}else {
+				if(Bukkit.getWorld("Nukes05").getPlayers().size() >= 1) {
+					NukesGame01.setType(Material.EMERALD_BLOCK);
+				}
+			}
+			
+			
 			ItemMeta GameMeta01 = NukesGame01.getItemMeta();
 			
 			//Looping Nukes Arenas 10 Times
-			for(int i=0; i<9; i++) {
+			for(int i=0; i<6; i++) {
 				id.add(NukesGame01);
 				idmeta.add(GameMeta01);
-				GameMeta01.setDisplayName(ChatColor.LIGHT_PURPLE + "Nukes Game " + i);
+				GameMeta01.setDisplayName(ChatColor.BOLD + "Nukes Game " + i);
 				NukesGame01.setItemMeta(GameMeta01);
 				nukes.setItem(i, NukesGame01);
 				
-	/*			if(worldPlayers01 < 9) {
-					worldPlayers01++;
-				}	*/
-				
-				getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "Nukes Arena " + i + " is Initialized!");
+				getServer().getConsoleSender().sendMessage(ChatColor.BOLD + "Nukes GUI Arena " + i + " is Initialized!");
 			}
-			getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "All Nukes Arenas have been Initialized!");
+			getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "All Nukes GUI Arenas have been Initialized!");
 	}
 }

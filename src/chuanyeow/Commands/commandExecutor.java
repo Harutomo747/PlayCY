@@ -163,6 +163,7 @@ public class commandExecutor implements CommandExecutor {
         {
         	Player player = (Player) sender;
         	//Open Inventory
+        	player.updateInventory();
         	player.openInventory(Final.nukes);
         	return true;
         }
