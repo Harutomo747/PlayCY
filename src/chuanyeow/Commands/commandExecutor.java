@@ -136,6 +136,8 @@ public class commandExecutor implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("nukeslobby"))
         {
         	Inventory nukes = Bukkit.createInventory(null, 9, "Select a Nukes MiniGame!");
+        	Player player = (Player) sender;
+        	
 			ArrayList<ItemStack> NukesItemStack = new ArrayList<ItemStack>();
 			ArrayList<ItemMeta> NukesItemMeta = new ArrayList<ItemMeta>();
 			ItemStack NukesIcon = new ItemStack(Material.EMERALD_BLOCK);
@@ -146,22 +148,22 @@ public class commandExecutor implements CommandExecutor {
 			ArrayList <String> playersInArena4 = new ArrayList<String>();
 			ArrayList <String> playersInArena5 = new ArrayList<String>();
 			
+			playersInArena1.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game1")).getPlayers().size() + "/" + plugin.getConfig().getString("ArenaWorlds.Game1Max"));
+			playersInArena1.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena2.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game2")).getPlayers().size() + "/" + plugin.getConfig().getString("ArenaWorlds.Game2Max"));
+			playersInArena2.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena3.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game3")).getPlayers().size() + "/" + plugin.getConfig().getString("ArenaWorlds.Game3Max"));
+			playersInArena3.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena4.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game4")).getPlayers().size() + "/" + plugin.getConfig().getString("ArenaWorlds.Game4Max"));
+			playersInArena4.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena5.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game5")).getPlayers().size() + "/" + plugin.getConfig().getString("ArenaWorlds.Game5Max"));
+			playersInArena5.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			
 			NukesIconMeta.setLore(playersInArena1);
 			NukesIconMeta.setLore(playersInArena2);
 			NukesIconMeta.setLore(playersInArena3);
 			NukesIconMeta.setLore(playersInArena4);
 			NukesIconMeta.setLore(playersInArena5);
-			
-			playersInArena1.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game1")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game1Max").toString());
-			playersInArena1.add(ChatColor.UNDERLINE + "Click to Join Game!");
-			playersInArena2.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game2")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game2Max").toString());
-			playersInArena2.add(ChatColor.UNDERLINE + "Click to Join Game!");
-			playersInArena3.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game3")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game3Max").toString());
-			playersInArena3.add(ChatColor.UNDERLINE + "Click to Join Game!");
-			playersInArena4.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game4")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game4Max").toString());
-			playersInArena4.add(ChatColor.UNDERLINE + "Click to Join Game!");
-			playersInArena5.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game5")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game5Max").toString());
-			playersInArena5.add(ChatColor.UNDERLINE + "Click to Join Game!");
 			
 			//Looping Nukes Arenas 10 Times
 			for(int i=1; i<6; i++) {
@@ -174,7 +176,8 @@ public class commandExecutor implements CommandExecutor {
 				//Putting Icon Full Circle <Repeat>
 				nukes.setItem(i, NukesIcon);
 			}
-				return true;
+			player.openInventory(nukes);
+			return true;
         }
 		return false;
     }

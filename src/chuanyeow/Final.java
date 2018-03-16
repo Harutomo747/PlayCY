@@ -15,7 +15,7 @@ public class Final extends JavaPlugin {
 	}
 	@Override
 	public void onDisable() {
-		getServer().getConsoleSender().sendMessage(ChatColor.RED + "PlayCY Disabled!");
+		getServer().getConsoleSender().sendMessage(ChatColor.RED + "PlayCY Plugin has been Disabled!");
 	}
 	
 	public void ConfigFiles() {
