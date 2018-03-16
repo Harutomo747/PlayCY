@@ -1,15 +1,14 @@
 package chuanyeow.Events;
 
+import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-
 import chuanyeow.Final;
-import chuanyeow.Commands.commandExecutor;
 import net.md_5.bungee.api.ChatColor;
 
 public class Events implements Listener {
@@ -26,8 +25,8 @@ public class Events implements Listener {
 	public void joinEvent(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		
-		//Actual Events
-		player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
+		//Actual Event
+		player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 2, 1);
 		player.performCommand("hubitems");
 		player.performCommand("spawn");
 		player.sendMessage(ChatColor.LIGHT_PURPLE + "=+=----------------[PlayCY]----------------=+=");
@@ -42,13 +41,19 @@ public class Events implements Listener {
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("News.Line 6")));
 	}
 	
-	@EventHandler
+/*	@EventHandler(priority = EventPriority.HIGHEST)
 	public void dropItem(PlayerDropItemEvent event) {
-		Item item = event.getItemDrop();
-				
-		if (item.getName() == plugin.getConfig().getString("Compass.Name") ||
-				(item.getName() == plugin.getConfig().getString("HidePlayers.Name"))) {
+		Player player = event.getPlayer();
+		if (player.getInventory().getContents() == menuItems().getContents()) {
 			event.setCancelled(true);
+		}
+	}	*/
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerUse(PlayerInteractEvent event) {
+		Player player = event.getPlayer();
+		if(player.getInventory().getItemInMainHand().getType() == Material.COMPASS && player.getWorld().getName() == "PlayCY_Main") {
+			player.performCommand("nukeslobby");
 		}
 	}
 

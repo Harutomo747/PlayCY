@@ -1,25 +1,21 @@
 package chuanyeow.Commands;
 
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
-import com.onarandombox.MultiverseCore.api.Teleporter;
 
 import chuanyeow.Final;
 
@@ -32,11 +28,10 @@ public class commandExecutor implements CommandExecutor {
 	}
 	
 	//Commands
-	@SuppressWarnings("static-access")
 	@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
-		//Spawn
+		//Spawning
         if (command.getName().equalsIgnoreCase("spawn"))
         {
         	Player player = (Player) sender;
@@ -52,30 +47,9 @@ public class commandExecutor implements CommandExecutor {
         //HubItems
         if (command.getName().equalsIgnoreCase("hubitems"))
         {
-        	//Passing Player to Sender as its not Defined, followed by getting player Inventory
         	Player player = (Player) sender;
         	
-        	//Get Inventory for ItemStack
-        	PlayerInventory inventory = player.getInventory();
-        	
-        	//ItemStacks (Define Items)
-        	ItemStack compass = new ItemStack(Material.COMPASS);
-        	ItemStack hideplayers = new ItemStack(Material.EMERALD_BLOCK);
-        	
-        	//ItemMetas (For Naming Items)
-        	ItemMeta compassMeta = compass.getItemMeta();
-        	ItemMeta hideplayersMeta = hideplayers.getItemMeta();
-        	
-        	//Naming Metas
-        	compassMeta.setDisplayName(ChatColor.YELLOW + plugin.getConfig().getString("Compass.Name"));
-        	hideplayersMeta.setDisplayName(ChatColor.YELLOW + plugin.getConfig().getString("HidePlayers.Name"));
-        	compass.setItemMeta(compassMeta);
-        	hideplayers.setItemMeta(hideplayersMeta);
-
-        	//Adding Items to Inventory
-        	inventory.clear();
-        	inventory.setItem(0, compass);
-        	inventory.setItem(1, hideplayers);
+        //	player.getInventory().addItem(nukes.getContents());
         	sender.sendMessage("Here are your Hub Items!");
         	return true;
         }
@@ -161,12 +135,47 @@ public class commandExecutor implements CommandExecutor {
         //NukesLobby
         if (command.getName().equalsIgnoreCase("nukeslobby"))
         {
-        	Player player = (Player) sender;
-        	//Open Inventory
-        	player.updateInventory();
-        	player.openInventory(Final.nukes);
-        	return true;
+        	Inventory nukes = Bukkit.createInventory(null, 9, "Select a Nukes MiniGame!");
+			ArrayList<ItemStack> NukesItemStack = new ArrayList<ItemStack>();
+			ArrayList<ItemMeta> NukesItemMeta = new ArrayList<ItemMeta>();
+			ItemStack NukesIcon = new ItemStack(Material.EMERALD_BLOCK);
+			ItemMeta NukesIconMeta = NukesIcon.getItemMeta();
+			ArrayList <String> playersInArena1 = new ArrayList<String>();
+			ArrayList <String> playersInArena2 = new ArrayList<String>();
+			ArrayList <String> playersInArena3 = new ArrayList<String>();
+			ArrayList <String> playersInArena4 = new ArrayList<String>();
+			ArrayList <String> playersInArena5 = new ArrayList<String>();
+			
+			NukesIconMeta.setLore(playersInArena1);
+			NukesIconMeta.setLore(playersInArena2);
+			NukesIconMeta.setLore(playersInArena3);
+			NukesIconMeta.setLore(playersInArena4);
+			NukesIconMeta.setLore(playersInArena5);
+			
+			playersInArena1.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game1")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game1Max").toString());
+			playersInArena1.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena2.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game2")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game2Max").toString());
+			playersInArena2.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena3.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game3")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game3Max").toString());
+			playersInArena3.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena4.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game4")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game4Max").toString());
+			playersInArena4.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			playersInArena5.add(ChatColor.GOLD + "Players: " + Bukkit.getServer().getWorld(plugin.getConfig().getString("ArenaWorlds.Game5")).getPlayers().toString() + "/" + plugin.getConfig().getString("ArenaWorlds.Game5Max").toString());
+			playersInArena5.add(ChatColor.UNDERLINE + "Click to Join Game!");
+			
+			//Looping Nukes Arenas 10 Times
+			for(int i=1; i<6; i++) {
+				//Individual Block Icon <Repeat>
+				NukesItemStack.add(NukesIcon);
+				NukesItemMeta.add(NukesIconMeta);
+				NukesIcon.setItemMeta(NukesIconMeta);
+				//Title <Repeat>
+				NukesIconMeta.setDisplayName(ChatColor.BOLD + "Nukes Game " + i);
+				//Putting Icon Full Circle <Repeat>
+				nukes.setItem(i, NukesIcon);
+			}
+				return true;
         }
-        return false;
+		return false;
     }
 }
