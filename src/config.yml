@@ -1,29 +1,50 @@
-# PlayCY Plugin | Version: 1.0 | Chuan Yeow
+# PlayCY Plugin | Version: 1.3 | Chuan Yeow
 # No one else can Use this Plugin except for PlayCY!
-
+Prefix: '&c&l[PlayCY]'
 # Spawn
 Spawn:
-    World: PlayCY_Spawn
+    World: PlayCY_Main
     x: -1342.58
     y: 70.00
     z: 462.43
 ArenaWorlds:
+    WaitingLobby: PlayCY_Main
+    WaitingLobbyx: -1342.47
+    WaitingLobbyy: 70.00
+    WaitingLobbyz: 487.47
+
     Game1: Nukes01
-    Game1Max: 20
+    Game1x: 500.00
+    Game1y: 7.00
+    Game1z: 23.00
+    Game1Max: 8
 
     Game2: Nukes02
-    Game2Max: 20
+    Game2x: 500.00
+    Game2y: 7.00
+    Game2z: 23.00
+    Game2Max: 8
 
     Game3: Nukes03
-    Game3Max: 20
+    Game3x: 500.00
+    Game3y: 7.00
+    Game3z: 23.00
+    Game3Max: 8
 
     Game4: Nukes04
-    Game4Max: 20
+    Game4x: 500.00
+    Game4y: 7.00
+    Game4z: 23.00
+    Game4Max: 8
 
     Game5: Nukes05
-    Game5Max: 20
+    Game5x: 500.00
+    Game5y: 7.00
+    Game5z: 23.00
+    Game5Max: 8
 Compass:
     Name: 'Game Menu'
+    Desc: 'Play our Exclusive PlayCY MiniGames!'
 HidePlayers:
     Name: 'Toggle Players'
 News:
